@@ -13,15 +13,19 @@ if [[ -z "$HF_TOKEN" ]]; then
 fi
 
 curl -L -H "Authorization: Bearer $HF_TOKEN" \
-  "https://huggingface.co/USER/MODEL1/resolve/main/clip_l.safetensors" \
+  "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/text_encoder/model.safetensors" \
   -o /workspace/storage/clip/clip_l.safetensors
 
 curl -L -H "Authorization: Bearer $HF_TOKEN" \
-  "https://huggingface.co/USER/MODEL2/resolve/main/t5xxl_fp16_merged.safetensors" \
-  -o /workspace/storage/clip/t5xxl_fp16_merged.safetensors
+  "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/text_encoder_2/model-00001-of-00002.safetensors" \
+  -o /workspace/storage/clip/t5xxl_fp16_1_of_2.safetensors
+
+  curl -L -H "Authorization: Bearer $HF_TOKEN" \
+  "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/text_encoder_2/model-00002-of-00002.safetensors" \
+  -o /workspace/storage/clip/t5xxl_fp16_2_of_2.safetensors
 
 curl -L -H "Authorization: Bearer $HF_TOKEN" \
-  "https://huggingface.co/USER/MODEL3/resolve/main/flux_dev_vae.safetensors" \
+  "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors" \
   -o /workspace/storage/vae/flux_dev_vae.safetensors
 
 # === Civitai Downloads ===
@@ -31,19 +35,19 @@ if [[ -z "$CIVITAI_TOKEN" ]]; then
 fi
 
 curl -L -H "Authorization: Bearer $CIVITAI_TOKEN" \
-  "https://civitai.com/api/download/models/XXX" \
+  "https://civitai.com/api/download/models/1823302?type=Model&format=SafeTensor&size=pruned&fp=fp8" \
   -o /workspace/storage/unet/fluxedUpFluxNSFW_41DevFp8.safetensors
 
 curl -L -H "Authorization: Bearer $CIVITAI_TOKEN" \
-  "https://civitai.com/api/download/models/YYY" \
+  "https://civitai.com/api/download/models/1739874?type=Model&format=SafeTensor&size=pruned&fp=fp8" \
   -o /workspace/storage/unet/fuxCapacityNSFWPornFlux_21.safetensors
 
 curl -L -H "Authorization: Bearer $CIVITAI_TOKEN" \
-  "https://civitai.com/api/download/models/ZZZ" \
+  "https://civitai.com/api/download/models/1905927?type=Model&format=SafeTensor&size=full&fp=fp16" \
   -o /workspace/storage/unet/getphatFLUXReality_v8.safetensors
 
 curl -L -H "Authorization: Bearer $CIVITAI_TOKEN" \
-  "https://civitai.com/api/download/models/AAA" \
+  "https://civitai.com/api/download/models/1703341?type=Model&format=SafeTensor&size=full&fp=fp8" \
   -o /workspace/storage/unet/realDream_flux1V1.safetensors
 
 echo "===== Setup abgeschlossen ====="
